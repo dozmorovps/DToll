@@ -1,0 +1,53 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+    }
+    apply plugin: 'java-library-distribution'
+}
+
+project(':common') {
+    dependencies {
+        compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.0'
+    }
+}
+
+
+project(':server-ui') {
+    dependencies {
+        compile project(':common')
+    }
+}
+
+project(':server-core') {
+
+    dependencies {
+        compile project(':common')
+    }
+}
+
+project(':tracker-ui') {
+    dependencies {
+        compile project(':common')
+    }
+}
+
+project(':tracker-core') {
+    dependencies {
+        compile project(':common')
+        // https://mvnrepository.com/artifact/org.springframework/spring-context
+        compile group: 'org.springframework', name: 'spring-context', version: '4.3.11.RELEASE'
+        // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+    }
+}
+
