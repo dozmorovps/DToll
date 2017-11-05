@@ -2,6 +2,9 @@ buildscript {
     repositories {
         mavenCentral()
     }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+    }
 }
 
 subprojects {
@@ -21,7 +24,6 @@ project(':common') {
         compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.0'
     }
 }
-
 
 project(':server-ui') {
     dependencies {
@@ -43,11 +45,12 @@ project(':tracker-ui') {
 }
 
 project(':tracker-core') {
+    apply plugin: 'org.springframework.boot'
     dependencies {
         compile project(':common')
-        // https://mvnrepository.com/artifact/org.springframework/spring-context
-        compile group: 'org.springframework', name: 'spring-context', version: '4.3.11.RELEASE'
-        // https://mvnrepository.com/artifact/org.slf4j/slf4j-simple
+        compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+        compile("org.springframework.boot:spring-boot-devtools")
+        testCompile("org.springframework.boot:spring-boot-starter-test")
     }
 }
 
