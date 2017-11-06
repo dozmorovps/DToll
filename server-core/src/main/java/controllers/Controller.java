@@ -12,7 +12,7 @@ public class Controller {
     @Autowired
     RestTemplate restTemplate;
 
-    @RequestMapping(value = "/test")
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
     @ResponseBody
     public String relay(@RequestBody GPSService gpsService){
         return "true";
