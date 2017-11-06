@@ -18,7 +18,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 public class DataPeekService {
 
     @Autowired
-    private GPSService gpsService;
+    public GPSService gpsService;
 
     private BlockingDeque<String> queue =  new LinkedBlockingDeque<>(100);
 
