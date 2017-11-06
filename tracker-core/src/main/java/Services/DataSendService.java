@@ -1,5 +1,7 @@
 package Services;
 
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
@@ -22,16 +24,16 @@ public class DataSendService {
     @Autowired
     RestTemplate restTemplate;
 
+    @Autowired
+    private Logger log;
 
 
     @Scheduled(cron = "${cron.init}")
     public void getPoint() throws InterruptedException {
-        System.out.println("UP");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType( MediaType.APPLICATION_JSON );
         HttpEntity request= new HttpEntity( dataPeekService.take(), headers );
         String returnedUser = restTemplate.postForObject( "http://127.0.0.1:8082/test", request, String.class );
-//        URI uri = restTemplate.postForObject("http://127.0.0.1:8082/test", dataPeekService.take());
-        System.out.println(returnedUser);
+        log.info(returnedUser);
     }
 }

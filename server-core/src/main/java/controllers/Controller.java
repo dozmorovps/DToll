@@ -15,8 +15,7 @@ public class Controller {
     @RequestMapping(value = "/test")
     @ResponseBody
     public String relay(@RequestBody GPSService gpsService){
-        System.out.println("пришло");
-        return "Ok";
+        return "true";
     }
 
 
