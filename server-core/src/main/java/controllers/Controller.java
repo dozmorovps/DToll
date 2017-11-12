@@ -13,14 +13,19 @@ import java.util.List;
 @RestController
 public class Controller {
 
-    @Autowired
-    RestTemplate restTemplate;
+
+    private final RestTemplate restTemplate;
+
+    public Controller(@Autowired RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     @RequestMapping(value = "/test", method = RequestMethod.POST)
     @ResponseBody
     public String relay(@RequestBody String str) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         List<String> array = objectMapper.readValue(str, new TypeReference<List<String>>(){});
+
 //        GPSService gpsService = objectMapper.readValue(array.get(0), GPSService.class);
         //тут явно будет дальнейшея обработка
         return "true";

@@ -16,10 +16,14 @@ import java.util.concurrent.LinkedBlockingDeque;
 @Component
 public class DataPeekService {
 
-    @Autowired
-    public GPSService gpsService;
+
+    private final GPSService gpsService;
 
     private BlockingDeque<String> queue =  new LinkedBlockingDeque<>(100);
+
+    public DataPeekService(@Autowired GPSService gpsService) {
+        this.gpsService = gpsService;
+    }
 
     @Scheduled (cron = "${cron.init}")
     void put() throws InterruptedException, JsonProcessingException {
@@ -28,7 +32,8 @@ public class DataPeekService {
     }
 
     public String take() throws InterruptedException {
-        return queue.take();
+        if(!queue.isEmpty())  return queue.take();
+        return "-1";
     }
 
     public Boolean queueIsEmpty()
