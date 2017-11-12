@@ -9,13 +9,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.client.RestTemplate;
 
-import javax.swing.*;
-
-import static org.springframework.boot.SpringApplication.*;
-
 @SpringBootApplication
 @ComponentScan({"Main","controllers","Services"})
-@PropertySource("classpath:/app.properties")
+@PropertySource("app.properties")
 public class MainSC {
 
      public static void main(String...args){

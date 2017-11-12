@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -30,5 +29,11 @@ public class DataPeekService {
 
     public String take() throws InterruptedException {
         return queue.take();
+    }
+
+    public Boolean queueIsEmpty()
+    {
+        if(!queue.isEmpty()) return true;
+        return false;
     }
 }
