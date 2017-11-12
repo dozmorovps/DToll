@@ -9,12 +9,13 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.client.RestTemplate;
 
-@SpringBootApplication
+
 @ComponentScan({"Main","controllers","Services"})
-@PropertySource("app.properties")
+@PropertySource("classpath:app.properties")
+@SpringBootApplication
 public class MainSC {
 
-     public static void main(String...args){
+    public static void main(String...args){
          SpringApplication.run(MainSC.class);
      }
 

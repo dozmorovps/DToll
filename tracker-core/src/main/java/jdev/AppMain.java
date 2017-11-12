@@ -1,4 +1,4 @@
-package jdev.trackercore;
+package jdev;
 
 import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
@@ -14,10 +14,11 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.web.client.RestTemplate;
 
 
-@SpringBootApplication
-@ComponentScan({"Services","jdev.trackercore"})
+
+@ComponentScan({"Services", "jdev"})
 @EnableScheduling
-@PropertySource("app.properties")
+@PropertySource("classpath:app.properties")
+@SpringBootApplication
 public class AppMain {
     public static void main(String[] args) {
         SpringApplication.run(AppMain.class,args);
