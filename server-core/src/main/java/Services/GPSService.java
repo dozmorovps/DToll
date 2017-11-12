@@ -3,7 +3,6 @@ package Services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
@@ -18,6 +17,8 @@ public class GPSService {
     public double longitude; // долгота
 
     public double azimuth; // азимут
+
+
 
     public String toJson() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();

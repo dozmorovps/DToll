@@ -1,7 +1,6 @@
 package jdev.trackercore;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -18,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @ComponentScan({"Services","jdev.trackercore"})
 @EnableScheduling
-@PropertySource("classpath:/app.properties")
+@PropertySource("app.properties")
 public class AppMain {
     public static void main(String[] args) {
         SpringApplication.run(AppMain.class,args);
@@ -27,7 +26,7 @@ public class AppMain {
     @Bean
     @Primary
     public Logger logger(){
-        return Logger.getLogger("LoggetTrackerCore");
+        return Logger.getLogger("LoggerTrackerCore");
     }
 
     @Bean
