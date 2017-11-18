@@ -24,26 +24,27 @@ public class GPSServiceTest {
 
     @Test
     public void getCoordinate() throws Exception {
-            GPSService gpsService = new GPSService();
-            gpsService.getCoordinate();
-            try{
+        GPSService gpsService = new GPSService();
+        gpsService.getCoordinate();
 
-                String str = ""+gpsService.latitude;
-                double tmp = Double.parseDouble(str);
+        String str = "" + gpsService.latitude;
+        double tmp = Double.parseDouble(str);
+        assertEquals(tmp, gpsService.latitude, 0.00002);
 
-                str = ""+gpsService.longitude;
-                tmp = Double.parseDouble(str);
+        str = "" + gpsService.longitude;
+        tmp = Double.parseDouble(str);
+        assertEquals(tmp, gpsService.longitude, 0.00002);
 
-                str = ""+gpsService.azimuth;
-                tmp = Double.parseDouble(str);
+        str = "" + gpsService.azimuth;
+        tmp = Double.parseDouble(str);
+        assertEquals(tmp, gpsService.azimuth, 0.00002);
 
-                str = ""+gpsService.speed;
-                tmp = Double.parseDouble(str);
+        str = "" + gpsService.speed;
+        tmp = Double.parseDouble(str);
+        assertEquals(tmp, gpsService.speed, 0.00002);
 
-            }catch (NumberFormatException e){}
 
     }
-
 
 
 }
