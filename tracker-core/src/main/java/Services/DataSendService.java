@@ -35,7 +35,7 @@ public class DataSendService {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType( MediaType.APPLICATION_JSON );
         List<String> arrayList = new ArrayList<>();
-        while(dataPeekService.queueIsEmpty()){
+        while(dataPeekService.queueIsNotEmpty()){
             arrayList.add(dataPeekService.take());
         }
         ObjectMapper objectMapper = new ObjectMapper();

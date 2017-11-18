@@ -36,9 +36,8 @@ public class DataPeekService {
         return "-1";
     }
 
-    public Boolean queueIsEmpty()
+    public Boolean queueIsNotEmpty()
     {
-        if(!queue.isEmpty()) return true;
-        return false;
+        return !queue.isEmpty();
     }
 }

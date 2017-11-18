@@ -47,9 +47,9 @@ public class DataPeekServiceTest {
     public void queueIsEmpty() throws Exception {
         gpsService = new GPSService();
         DataPeekService dataPeekService = new DataPeekService(gpsService);
-        assertTrue(!dataPeekService.queueIsEmpty());
+        assertTrue(!dataPeekService.queueIsNotEmpty());
         dataPeekService.put();
-        assertTrue(dataPeekService.queueIsEmpty());
+        assertTrue(dataPeekService.queueIsNotEmpty());
     }
 
 }
