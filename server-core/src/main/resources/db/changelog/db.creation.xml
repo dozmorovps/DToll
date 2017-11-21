@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+    <changeSet id="2017-11-18-initial-schema-import-0" author="DPS">
+        <createTable tableName="USERS">
+            <column name="ID" type="BIGINT" autoIncrement="true" />
+            <column name="NAME" type="Varchar(255)"/>
+            <column name="SENAME" type="Varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2017-11-18-initial-schema-import-1" author="DPS">
+        <addPrimaryKey tableName="USERS" columnNames="ID"/>
+    </changeSet>
+
+
+</databaseChangeLog>

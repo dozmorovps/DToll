@@ -1,4 +1,4 @@
-package Services;
+package entity;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;

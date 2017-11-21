@@ -26,7 +26,7 @@ public class Controller {
         ObjectMapper objectMapper = new ObjectMapper();
         List<String> array = objectMapper.readValue(str, new TypeReference<List<String>>(){});
 
-//        GPSService gpsService = objectMapper.readValue(array.get(0), GPSService.class);
+//        GPSEntity gpsService = objectMapper.readValue(array.get(0), GPSEntity.class);
         //тут явно будет дальнейшея обработка
         return "true";
     }

@@ -33,6 +33,7 @@ project(':spring-ui') {
         // tag::security[]
         compile("org.springframework.boot:spring-boot-starter-security")
         // end::security[]
+
         testCompile("junit:junit")
         testCompile("org.springframework.boot:spring-boot-starter-test")
         testCompile("org.springframework.security:spring-security-test")
@@ -46,7 +47,14 @@ project(':server-core') {
         compile project(':common')
         compile("org.springframework.boot:spring-boot-starter-web")
         compile("org.springframework.boot:spring-boot-devtools")
+
+        compile("org.springframework.boot:spring-boot-starter-data-jpa")
+        compile group: 'org.liquibase', name: 'liquibase-core', version: '3.5.3'
+        compile group: 'com.h2database', name: 'h2', version: '1.4.196'
+
         testCompile("org.springframework.boot:spring-boot-starter-test")
+
+        compile group: 'log4j', name: 'log4j', version: '1.2.17'
     }
 }
 
@@ -62,9 +70,12 @@ project(':tracker-core') {
         compile project(':common')
         compile("org.springframework.boot:spring-boot-starter-web")
         compile("org.springframework.boot:spring-boot-devtools")
-        testCompile("org.springframework.boot:spring-boot-starter-test")
 
-        // https://mvnrepository.com/artifact/log4j/log4j
+        compile("org.springframework.boot:spring-boot-starter-data-jpa")
+        compile group: 'org.liquibase', name: 'liquibase-core', version: '3.5.3'
+        compile group: 'com.h2database', name: 'h2', version: '1.4.196'
+
+        testCompile("org.springframework.boot:spring-boot-starter-test")
         compile group: 'log4j', name: 'log4j', version: '1.2.17'
 
     }

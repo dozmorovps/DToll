@@ -16,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 
 
-@ComponentScan({"Services", "jdev"})
+@ComponentScan({"entity", "jdev"})
 @EnableScheduling
 @PropertySource("classpath:app.properties")
 @SpringBootApplication
