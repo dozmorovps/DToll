@@ -1,8 +1,10 @@
-package entity;
+package service;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dao.GPSEntity;
+import dao.GPSRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -19,6 +21,9 @@ import java.util.List;
 public class DataSendService {
 
     @Autowired
+    GPSRepository gpsRepository;
+
+    @Autowired
     private DataPeekService dataPeekService;
 
     private final RestTemplate restTemplate;
@@ -33,14 +38,14 @@ public class DataSendService {
     @Scheduled(cron = "${cron.output}")
     private void getPoint() throws InterruptedException, JsonProcessingException {
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType( MediaType.APPLICATION_JSON );
-        List<String> arrayList = new ArrayList<>();
-        while(dataPeekService.queueIsNotEmpty()){
-            arrayList.add(dataPeekService.take());
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        List<GPSEntity> arrayList = (List<GPSEntity>) gpsRepository.findAll();
+        if (arrayList.size() != 0) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            HttpEntity request = new HttpEntity(objectMapper.writeValueAsString(arrayList), headers);
+            String returnedUser = restTemplate.postForObject("http://127.0.0.1:8082/test", request, String.class);
+            gpsRepository.deleteAll();
+            log.info(returnedUser);
         }
-        ObjectMapper objectMapper = new ObjectMapper();
-        HttpEntity request= new HttpEntity( objectMapper.writeValueAsString(arrayList), headers );
-        String returnedUser = restTemplate.postForObject( "http://127.0.0.1:8082/test", request, String.class );
-        log.info(returnedUser);
     }
 }

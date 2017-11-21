@@ -3,6 +3,8 @@ package controllers;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import dao.GPSRepository;
+import dao.entity.GPSEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -13,6 +15,8 @@ import java.util.List;
 @RestController
 public class Controller {
 
+    @Autowired
+    GPSRepository gpsRepository;
 
     private final RestTemplate restTemplate;
 
@@ -24,12 +28,11 @@ public class Controller {
     @ResponseBody
     public String relay(@RequestBody String str) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        List<String> array = objectMapper.readValue(str, new TypeReference<List<String>>(){});
+        List<GPSEntity> array = objectMapper.readValue(str, new TypeReference<List<GPSEntity>>() {
+        });
+        gpsRepository.save(array);
 
-//        GPSEntity gpsService = objectMapper.readValue(array.get(0), GPSEntity.class);
-        //тут явно будет дальнейшея обработка
         return "true";
     }
-
 
 }

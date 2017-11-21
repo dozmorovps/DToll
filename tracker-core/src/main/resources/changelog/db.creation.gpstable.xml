@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+    <changeSet id="2017-11-18-initial-schema-import-0" author="DPS">
+        <createTable tableName="GPS">
+            <column name="ID" type="BIGINT" autoIncrement="true" />
+            <column name="speed" type="DOUBLE"/>
+            <column name="latitude" type="DOUBLE"/>
+            <column name="longitude" type="DOUBLE"/>
+            <column name="azimuth" type="DOUBLE"/>
+            <column name="USER_ID" type="BIGINT"/>
+        </createTable>
+        <addPrimaryKey tableName="GPS" columnNames="ID"/>
+    </changeSet>
+
+
+</databaseChangeLog>

@@ -60,23 +60,7 @@ public class MainSC implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        String str = "{\"id\":1,\"speed\":12.0,\"latitude\":12.0,\"longitude\":12.0,\"azimuth\":12.0,\"user_ID\":1}";
-        GPSEntity gps1 = createGPS(str);
-        readGPS();
-        log.info("______________________________________________________________");
-        String str1 = "{\"id\":1,\"speed\":12.0,\"latitude\":13.0,\"longitude\":13.0,\"azimuth\":13.0,\"user_ID\":1}";
-        updateGPS(gps1, str1);
-        readGPS();
-
-        readUsers();
-        log.info("______________________________________________________________");
         USEREntity user1 = createUser("pavel", "dozmorov");
-        readUsers();
-        log.info("______________________________________________________________");
-        deleteUser(user1);
-        readUsers();
-        log.info("______________________________________________________________");
-
     }
 
     @Autowired
