@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.persistence.*;
+import java.util.Random;
 
 
 @Entity
@@ -99,6 +100,15 @@ public class GPSEntity {
         this.azimuth = model.azimuth;
         this.speed = model.speed;
         this.USER_ID = model.USER_ID;
+    }
+
+    public void getCoordinate() {
+        Random rd = new Random();
+        speed = rd.nextDouble();
+        latitude = rd.nextDouble();
+        longitude = rd.nextDouble();
+        azimuth = rd.nextDouble();
+        USER_ID =1;
     }
 
 
