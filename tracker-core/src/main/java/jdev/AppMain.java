@@ -5,10 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.scheduling.TaskScheduler;
@@ -18,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 @EnableJpaRepositories("dao")
 @EntityScan("dao")
-@ComponentScan({"service", "jdev", "dao"})
+@ComponentScan({"service", "jdev", "dao", "config"})
 @EnableScheduling
 @PropertySource("classpath:app.properties")
 @SpringBootApplication
@@ -46,8 +43,5 @@ public class AppMain {
         return builder.build();
     }
 
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer propertyConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }
+
 }
